@@ -13,6 +13,7 @@ pygame.mixer.music.play(-1)
 
 tela = pygame.display.set_mode((largura,altura))
 pygame.display.set_caption('Get the B(ob)urger!')
+
 #========================================
 
 
@@ -24,7 +25,9 @@ class Sponge(pygame.sprite.Sprite):
         self.sprites.append(pygame.image.load('sprites/bob_2.png'))
         self.atual = 0
         self.image = self.sprites[self.atual]
+
         self.image = pygame.transform.scale(self.image, (45, 45))
+
 
         self.rect = self.image.get_rect()
         self.x_bob = 100
@@ -83,7 +86,9 @@ class Alface(pygame.sprite.Sprite):
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (25,25))
         if self.rect.colliderect(bob.rect):
+
             print('oi, colidiu')
+
             global alfac
             alfac += 1
             self.kill()
@@ -109,7 +114,9 @@ class Carne(pygame.sprite.Sprite):
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (25,25))
         if self.rect.colliderect(bob.rect):
+
             print('oi, colidiu')
+
             global carne
             carne += 1
             self.kill()
@@ -134,7 +141,9 @@ class Pao(pygame.sprite.Sprite):
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (25, 25))
         if self.rect.colliderect(bob.rect):
+
             print('oi, colidiu')
+
             global paum
             paum += 1
             self.kill()
