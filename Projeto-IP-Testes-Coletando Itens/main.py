@@ -149,43 +149,42 @@ class Pao(pygame.sprite.Sprite):
             self.kill()
 
 
-
-
-
-
-
-
 todas_sprites = pygame.sprite.Group()
 bob = Sponge()
 
-for i in range (3):
-    alface_i = Alface(randint(40,600), randint(40,420))
+for i in range(3):
+    alface_i = Alface(randint(40, 600), randint(40, 420))
     todas_sprites.add(alface_i)
-    carne_i = Carne(randint(40,600), randint(40,420))
+    carne_i = Carne(randint(40, 600), randint(40, 420))
     todas_sprites.add(carne_i)
-    pao_i = Pao(randint(40,600), randint(40,420))
+    pao_i = Pao(randint(40, 600), randint(40, 420))
     todas_sprites.add(pao_i)
 
 todas_sprites.add(bob)
 
 relogio = pygame.time.Clock()
 carne = alfac = paum = 0
-while True:
-    relogio.tick(100)
-    tela.fill((0,110,100))
-    msg1 = f'Carne: {carne}  Alface: {alfac}   Pão:  {paum}'
-    posicao = txt.render(msg1, True, (0, 255, 0))
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            exit()
-    if pygame.key.get_pressed():
-        bob.posicao()
 
-    todas_sprites.draw(tela)
-    todas_sprites.update()
-    tela.blit(posicao, (20, 20))
-    pygame.display.flip()
+
+def jogo():
+    while True:
+        relogio.tick(100)
+        tela.fill((0,110,100))
+        msg1 = f'Carne: {carne}  Alface: {alfac}   Pão:  {paum}'
+        posicao = txt.render(msg1, True, (0, 255, 0))
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+        if pygame.key.get_pressed():
+            bob.posicao()
+
+        todas_sprites.draw(tela)
+        todas_sprites.update()
+        tela.blit(posicao, (20, 20))
+        pygame.display.flip()
+
+
 
 
 
