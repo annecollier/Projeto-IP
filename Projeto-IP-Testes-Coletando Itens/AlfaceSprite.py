@@ -25,6 +25,5 @@ class Alface(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (25,25))
         if self.rect.colliderect(BobGroup.bob.rect):
             print('Alface Coletado!')
-
             PontuacaoContagem.alface += 1
             self.kill()
