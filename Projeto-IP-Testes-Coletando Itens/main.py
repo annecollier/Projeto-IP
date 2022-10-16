@@ -16,7 +16,7 @@ altura = 480
 largura = 640
 tela = pygame.display.set_mode((largura, altura))
 background = pygame.image.load(('background.jpg'))
-pygame.mixer.music.load('theme/tema.mp3')
+pygame.mixer.music.load('music_bob.mp3')
 pygame.mixer.music.play(-1)
 icon = pygame.image.load('sprites/bob_1.png')
 pygame.display.set_icon(icon)
