@@ -16,19 +16,40 @@ class Plancton(pygame.sprite.Sprite):
         self.y_planc = randint(40,420)
         self.change_position = 1
         self.rect.topleft = self.x_planc,self.y_planc
+        self.ida_horizontal = True
+        self.ida_vertical = True
 
-    def posicao(self):
-        self.x_planc += self.change_position
+    def subindo(self):
+        self.y_planc += self.change_position
+        if self.y_planc == 480:
+            self.ida_vertical = False
+        return self
+    def descendo(self):
         self.y_planc -= self.change_position
-        if self.x_planc <= 40:
-            self.x_planc += self.change_position
-        if self.x_planc >= 500:
-            self.x_planc -= self.change_position
-        if self.y_planc <= 50:
-            self.y_planc += self.change_position
-        if self.y_planc >= 100:
-            self.y_planc -= self.change_position
+        if self.y_planc == 0:
+            self.ida_vertical = True
+        return self
+    def direita(self):
+        self.x_planc += self.change_position
+        if self.x_planc == 640:
+            self.ida_horizontal = False
+        return self
+    def esquerda(self):
+        self.x_planc -= self.change_position
+        if self.x_planc == 0:
+            self.ida_horizontal: True
+        return self
+    def posicao(self):
+        if self.ida_horizontal:
+            Plancton.direita()
+        else:
+            Plancton.esquerda()
+        if self.ida_vertical:
+            Plancton.subindo()
+        else:
+            Plancton.descendo()
         self.rect.topleft = self.x_planc, self.y_planc
+
     def update(self):
         if self.rect.colliderect(BobGroup.bob.rect):
             print('Vida perdida!')
