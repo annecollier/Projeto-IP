@@ -41,13 +41,13 @@ class Plancton(pygame.sprite.Sprite):
         return self
     def posicao(self):
         if self.ida_horizontal:
-            Plancton.direita()
+            Plancton.direita(BobGroup.plancton)
         else:
-            Plancton.esquerda()
+            Plancton.esquerda(BobGroup.plancton)
         if self.ida_vertical:
-            Plancton.subindo()
+            Plancton.subindo(BobGroup.plancton)
         else:
-            Plancton.descendo()
+            Plancton.descendo(BobGroup.plancton)
         self.rect.topleft = self.x_planc, self.y_planc
 
     def update(self):
