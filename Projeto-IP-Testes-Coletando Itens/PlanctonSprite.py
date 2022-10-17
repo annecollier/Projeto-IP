@@ -16,6 +16,7 @@ class Plancton(pygame.sprite.Sprite):
         self.y_planc = randint(40,420)
         self.change_position = 1
         self.rect.topleft = self.x_planc,self.y_planc
+        self.colidiu = False
 
     def posicao(self):
         self.x_planc += self.change_position
@@ -29,8 +30,14 @@ class Plancton(pygame.sprite.Sprite):
         if self.y_planc >= 100:
             self.y_planc -= self.change_position
         self.rect.topleft = self.x_planc, self.y_planc
+
     def update(self):
-        if self.rect.colliderect(BobGroup.bob.rect):
+        if self.rect.colliderect(BobGroup.bob.rect) and (self.colidiu == False):
             print('Vida perdida!')
             PontuacaoContagem.vidas -= 1
+            self.colidiu = True
+
+        if not self.rect.colliderect(BobGroup.bob.rect):
+            self.colidiu = False
+
 
