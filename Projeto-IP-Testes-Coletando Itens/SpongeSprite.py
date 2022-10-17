@@ -23,7 +23,7 @@ class Sponge(pygame.sprite.Sprite):
             self.x_bob -= 3
             if self.x_bob <= 0:
                 self.x_bob = 0
-            self.rect.topleft = self.x_bob,self.y_bob
+            self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_d]:
             self.x_bob +=3
             if self.x_bob >= 600:
