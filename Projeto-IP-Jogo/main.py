@@ -62,11 +62,17 @@ def game():
                 BobGroup.plancton.posicao()
 
             if PontuacaoContagem.vidas == 0:
+                morte = pygame.mixer.Sound('morte.wav')
+                pygame.mixer.Sound.set_volume(morte, 1)
+                morte.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
                 PontuacaoContagem.vidas = 3
                 status = "gameover"
 
             if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
+                venceu = pygame.mixer.Sound('venceu.wav')
+                pygame.mixer.Sound.set_volume(venceu, 1)
+                venceu.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
                 PontuacaoContagem.vidas = 3
                 status = "win"

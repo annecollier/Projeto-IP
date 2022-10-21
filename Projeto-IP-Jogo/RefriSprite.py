@@ -25,5 +25,8 @@ class Refri(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (25,40))
         if self.rect.colliderect(BobGroup.bob.rect):
             print('Refri Coletado!')
+            coletou = pygame.mixer.Sound('temacoletados.wav')
+            pygame.mixer.Sound.set_volume(coletou, 0.4)
+            coletou.play()
             PontuacaoContagem.refri += 1
             self.kill()

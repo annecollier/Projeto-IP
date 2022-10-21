@@ -55,6 +55,9 @@ class Plancton(pygame.sprite.Sprite):
         if self.rect.colliderect(BobGroup.bob.rect) and (self.colidiu == False):
             print('Vida perdida!')
             PontuacaoContagem.vidas -= 1
+            choque = pygame.mixer.Sound('inimigo.wav')
+            pygame.mixer.Sound.set_volume(choque, 1)
+            choque.play()
             self.colidiu = True
 
         if not self.rect.colliderect(BobGroup.bob.rect):
