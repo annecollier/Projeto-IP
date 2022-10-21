@@ -26,18 +26,18 @@ class Sponge(pygame.sprite.Sprite):
             self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_d]:
             self.x_bob +=3
-            if self.x_bob >= 600:
-                self.x_bob = 600
+            if self.x_bob >= 950:
+                self.x_bob = 950
             self.rect.topleft = self.x_bob,self.y_bob
         if pygame.key.get_pressed()[K_w]:
             self.y_bob -= 3
-            if self.y_bob <= 0:
-                self.y_bob = 0
+            if self.y_bob <= 52:
+                self.y_bob = 52
             self.rect.topleft = self.x_bob,self.y_bob
         if pygame.key.get_pressed()[K_s]:
             self.y_bob += 3
-            if self.y_bob >= 440:
-                self.y_bob = 440
+            if self.y_bob >= 580:
+                self.y_bob = 580
             self.rect.topleft = self.x_bob,self.y_bob
     def update(self):
         if self.animar == True:

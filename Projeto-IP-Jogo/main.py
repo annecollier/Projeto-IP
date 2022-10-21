@@ -21,21 +21,19 @@ def game():
     pygame.mixer.music.load('music_bob.mp3')
     pygame.mixer.music.play(-1)
 
-
-
-    altura = 480
-    largura = 640
-    tela = pygame.display.set_mode((largura, altura))
-    background = pygame.image.load(('background2.jpg'))
+    altura = 640
+    largura = 1024
+    background = pygame.image.load(('foto.jpg'))
     icon = pygame.image.load('sprites/bob_1.png')
     vidas = pygame.image.load('coletaveis/vidas.png')
     burguer = pygame.image.load('coletaveis/burguer1.png')
+    burguer = pygame.transform.scale(burguer, (26, 26))
     vidas = pygame.transform.scale(vidas, (26, 26))
     fries = pygame.image.load('coletaveis/fries.png')
     fries = pygame.transform.scale(fries, (29, 32))
     soda = pygame.image.load('coletaveis/soda1.png')
     soda = pygame.transform.scale(soda, (22, 40))
-    burguer = pygame.transform.scale(burguer, (26, 26))
+
     pygame.display.set_icon(icon)
     pygame.display.set_caption('Get the B(ob)urger!')
     relogio = pygame.time.Clock()
@@ -85,22 +83,21 @@ def game():
 
         if status == "start":
             fundo = pygame.image.load("Fundos/Background.png")
-            tela = pygame.display.set_mode((1280, 720))
+            tela = pygame.display.set_mode((largura,altura))
             tela.blit(fundo, (0, 0))
-
             MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-            MENU_TEXT = get_font(55).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
-            MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+            MENU_TEXT = get_font(52).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
+            MENU_RECT = MENU_TEXT.get_rect(center=(518, 100))
 
-            PLAY_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(640, 250),
-                                text_input="INICIAR", font=get_font(75), base_color="#d7fcd4",
+            PLAY_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(518, 250),
+                                text_input="INICIAR", font=get_font(70), base_color="#d7fcd4",
                                 hovering_color="White")
-            OPTIONS_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(640, 400),
-                                   text_input="OPÇÕES", font=get_font(75), base_color="#d7fcd4",
+            OPTIONS_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(518, 400),
+                                   text_input="OPÇÕES", font=get_font(70), base_color="#d7fcd4",
                                    hovering_color="White")
-            QUIT_BUTTON = botao(image=pygame.image.load("MenuAssets/Quit Rect.png"), pos=(1120, 650),
-                                text_input="SAIR", font=get_font(38), base_color="#d7fcd4", hovering_color="White")
+            QUIT_BUTTON = botao(image=pygame.image.load("MenuAssets/Quit Rect.png"), pos=(920, 590),
+                                text_input="SAIR", font=get_font(35), base_color="#d7fcd4", hovering_color="White")
 
             tela.blit(MENU_TEXT, MENU_RECT)
 
@@ -124,16 +121,16 @@ def game():
             pygame.display.update()
 
         if status == "win":
-            tela = pygame.display.set_mode((1280, 720))
+            tela = pygame.display.set_mode((largura, altura))
             OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
             tela.blit(fundo, (0, 0))
 
             OPTIONS_TEXT = get_font(45).render("Você ganhou!!", True, "Black")
-            OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
+            OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(518, 260))
             tela.blit(OPTIONS_TEXT, OPTIONS_RECT)
 
-            OPTIONS_BACK = botao(image=None, pos=(640, 460),
-                                 text_input="Voltar", font=get_font(75), base_color="Black", hovering_color="Green")
+            OPTIONS_BACK = botao(image=None, pos=(518, 460),
+                                 text_input="Voltar", font=get_font(70), base_color="Black", hovering_color="Green")
 
             OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
             OPTIONS_BACK.update(tela)
@@ -152,16 +149,16 @@ def game():
             pygame.display.update()
 
         if status == "gameover":
-            tela = pygame.display.set_mode((1280, 720))
+            tela = pygame.display.set_mode((largura, altura))
             OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
             tela.blit(fundo, (0, 0))
 
             texto_gameover = get_font(45).render("GAME OVER", True, "Black")
-            OPTIONS_RECT = texto_gameover.get_rect(center=(640, 260))
+            OPTIONS_RECT = texto_gameover.get_rect(center=(518, 260))
             tela.blit(texto_gameover, OPTIONS_RECT)
 
-            OPTIONS_BACK = botao(image=None, pos=(640, 460),
-                                 text_input="Tente de novo", font=get_font(75), base_color="Black",
+            OPTIONS_BACK = botao(image=None, pos=(518, 460),
+                                 text_input="Tente de novo", font=get_font(70), base_color="Black",
                                  hovering_color="Green")
 
             OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
