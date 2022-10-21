@@ -1,6 +1,5 @@
 import pygame, sys
 from botoes import botao
-from main import game
 
 pygame.init()
 
