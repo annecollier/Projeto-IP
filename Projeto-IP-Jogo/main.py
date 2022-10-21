@@ -176,4 +176,5 @@ def game():
             pygame.display.update()
 
         pygame.display.update()
-game()
+if __name__ == '__main__':
+    game()
