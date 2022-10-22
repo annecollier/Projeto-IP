@@ -23,7 +23,7 @@ def game():
 
     altura = 640
     largura = 1024
-    background = pygame.image.load(('foto.jpg'))
+    background = pygame.image.load(('fundomapa.jpg'))
     icon = pygame.image.load('sprites/bob_1.png')
     vidas = pygame.image.load('coletaveis/vidas.png')
     burguer = pygame.image.load('coletaveis/burguer1.png')
