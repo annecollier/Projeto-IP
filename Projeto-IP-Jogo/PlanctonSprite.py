@@ -12,8 +12,8 @@ class Plancton(pygame.sprite.Sprite):
         self.image = self.sprites[self.atual]
         self.image = pygame.transform.scale(self.image, (40.3, 71.5))
         self.rect = self.image.get_rect()
-        self.x_planc = randint(40,1000)
-        self.y_planc = randint(40,620)
+        self.x_planc = randint(40,980)
+        self.y_planc = randint(40,600)
         self.change_position = 1.5
         self.rect.topleft = self.x_planc,self.y_planc
         self.colidiu = False
@@ -56,7 +56,7 @@ class Plancton(pygame.sprite.Sprite):
             print('Vida perdida!')
             PontuacaoContagem.vidas -= 1
             perdeu = pygame.mixer.Sound('inimigo.wav')
-            pygame.mixer.Sound.set_volume(perdeu, 0.4)
+            pygame.mixer.Sound.set_volume(perdeu, 0.2)
             perdeu.play()
             self.colidiu = True
 

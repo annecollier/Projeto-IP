@@ -26,7 +26,7 @@ class Fries(pygame.sprite.Sprite):
         if self.rect.colliderect(BobGroup.bob.rect):
             print('Batatinha Coletada!')
             coletou = pygame.mixer.Sound('temacoletados.wav')
-            pygame.mixer.Sound.set_volume(coletou, 0.4)
+            pygame.mixer.Sound.set_volume(coletou, 0.2)
             coletou.play()
             PontuacaoContagem.fries += 1
             self.kill()

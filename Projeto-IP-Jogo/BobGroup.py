@@ -2,7 +2,11 @@ import SpongeSprite
 import SpriteGroups
 import PlanctonSprite
 
-bob = SpongeSprite.Sponge()
-plancton = PlanctonSprite.Plancton()
-SpriteGroups.todas_sprites.add(bob)
-SpriteGroups.todas_sprites.add(plancton)
+def personagens():
+    bob = SpongeSprite.Sponge()
+    plancton = PlanctonSprite.Plancton()
+    SpriteGroups.todas_sprites.add(bob)
+    SpriteGroups.todas_sprites.add(plancton)
+    return bob,plancton
+
+bob,plancton = personagens()

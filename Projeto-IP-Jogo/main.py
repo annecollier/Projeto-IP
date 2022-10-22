@@ -39,7 +39,6 @@ def game():
     relogio = pygame.time.Clock()
     status = "start"
 
-
     while True:
         if status == "game":
             tela = pygame.display.set_mode((largura, altura))
@@ -65,6 +64,7 @@ def game():
                 morte.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
                 PontuacaoContagem.vidas = 3
+                SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "gameover"
 
             if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
@@ -73,8 +73,8 @@ def game():
                 venceu.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
                 PontuacaoContagem.vidas = 3
+                SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "win"
-
             SpriteGroups.todas_sprites.draw(tela)
             SpriteGroups.todas_sprites.update()
             tela.blit(posicao, (20, 20))
