@@ -44,10 +44,10 @@ def game():
             tela = pygame.display.set_mode((largura, altura))
             relogio.tick(100)
             tela.blit(background,(0,0))
-            tela.blit(vidas, (255,22))
+            tela.blit(vidas, (218,22))
             tela.blit(burguer, (15, 22))
-            tela.blit(soda, (96, 13))
-            tela.blit(fries, (170, 17))
+            tela.blit(soda, (82, 13))
+            tela.blit(fries, (145, 17))
             msg1 = f'    : {PontuacaoContagem.burguer}       : {PontuacaoContagem.refri}       :  {PontuacaoContagem.fries}       :{PontuacaoContagem.vidas}'
             posicao = txt.render(msg1, True, (0, 110, 110))
             for event in pygame.event.get():
