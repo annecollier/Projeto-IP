@@ -7,6 +7,7 @@ def personagens():
     plancton = PlanctonSprite.Plancton()
     SpriteGroups.todas_sprites.add(bob)
     SpriteGroups.todas_sprites.add(plancton)
+    SpriteGroups.bob.add(bob)
     return bob,plancton
 
 bob,plancton = personagens()

@@ -15,4 +15,9 @@ def desenhar():
         todas_sprites.add(fries_i)
     return todas_sprites
 
+def bob_desenho():
+    bob = pygame.sprite.Group()
+    return bob
+
 todas_sprites = desenhar()
+bob = bob_desenho()
