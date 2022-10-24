@@ -5,7 +5,6 @@ from botoes import botao
 import BobGroup
 import SpriteGroups
 
-statuss = "indefinido"
 
 def get_font(size):
     return pygame.font.Font("MenuAssets/font.ttf", size)
@@ -60,6 +59,8 @@ def instrucoes1():
             if iniciar.checkForInput(menu_instrucao1_pos):
                 status = "game"
 
+    pygame.display.update()
+
 
 def instrucoes2():
     relogio = pygame.time.Clock()
@@ -74,10 +75,16 @@ def instrucoes2():
     titulo = get_font(45).render("INSTRUÇÕES", True, "#EEE8AA")
     titulo_espaco = titulo.get_rect(center=(518, 100))
     tela.blit(titulo, titulo_espaco)
+    historia1 = get_font(20).render("Para se movimentar aperte as teclas do teclado:", True, "#EEE8AA")
+    historia_espaco1 = historia1.get_rect(center=(510, 160))
+    tela.blit(historia1, historia_espaco1)
+    historia2 = get_font(20).render(" W, A, S, D", True, "#EEE8AA")
+    historia_espaco2 = historia2.get_rect(center=(510, 190))
+    tela.blit(historia2, historia_espaco2)
 
     seguinte = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(518, 530),
-                       text_input="SEGUINTE", font=get_font(30), base_color="#d7fcd4",
-                       hovering_color="White")
+                     text_input="SEGUINTE", font=get_font(30), base_color="#d7fcd4",
+                     hovering_color="White")
 
     for button in [seguinte]:
         button.changeColor(menu_instrucao2_pos)
@@ -92,10 +99,11 @@ def instrucoes2():
                 status = "instrucoes3"
         if pygame.key.get_pressed():
             BobGroup.bob.posicao()
-        SpriteGroups.bob.draw(tela)
-        SpriteGroups.bob.update()
-        pygame.display.flip()
-        pygame.display.update()
+
+    SpriteGroups.bob.draw(tela)
+    SpriteGroups.bob.update()
+    pygame.display.flip()
+    pygame.display.update()
 
 def instrucoes3():
     altura = 640
@@ -116,11 +124,11 @@ def instrucoes3():
     tela.blit(historia2, historia_espaco2)
 
     anterior = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(290, 530),
-                       text_input="ANTERIOR", font=get_font(30), base_color="#d7fcd4",
-                       hovering_color="White")
+                     text_input="ANTERIOR", font=get_font(30), base_color="#d7fcd4",
+                     hovering_color="White")
     jogar = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(718, 530),
-                    text_input="JOGAR", font=get_font(30), base_color="#d7fcd4",
-                    hovering_color="White")
+                  text_input="JOGAR", font=get_font(30), base_color="#d7fcd4",
+                  hovering_color="White")
 
     for button in [anterior, jogar]:
         button.changeColor(menu_instrucao3_pos)
@@ -136,3 +144,4 @@ def instrucoes3():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if jogar.checkForInput(menu_instrucao3_pos):
                 status = "game"
+    pygame.display.update()

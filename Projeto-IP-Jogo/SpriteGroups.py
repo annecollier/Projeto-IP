@@ -16,8 +16,8 @@ def desenhar():
     return todas_sprites
 
 def bob_desenho():
-    bob = pygame.sprite.Group()
-    return bob
+    bob_menu = pygame.sprite.Group()
+    return bob_menu
 
 todas_sprites = desenhar()
-bob = bob_desenho()
+bob_menu = bob_desenho()
