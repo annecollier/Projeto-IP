@@ -11,6 +11,7 @@ import BobGroup
 import PontuacaoContagem
 import SpriteGroups
 
+from SpongeSprite import Sponge
 
 def get_font(size):
     return pygame.font.Font("MenuAssets/font.ttf", size)
@@ -212,10 +213,10 @@ def game():
                     if seguinte.checkForInput(menu_instrucao2_pos):
                         status = "instrucoes3"
                 if pygame.key.get_pressed():
-                    BobGroup.bob.posicao()
+                    BobGroup.bob_menu.posicao_menu()
 
-            SpriteGroups.bob.draw(tela)
-            SpriteGroups.bob.update()
+            SpriteGroups.bob_menu.draw(tela)
+            SpriteGroups.bob_menu.update()
             pygame.display.flip()
             pygame.display.update()
 
