@@ -71,6 +71,8 @@ def game():
                 PontuacaoContagem.vidas = 3
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "gameover"
+                SpriteGroups.todas_sprites.add(BobGroup.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.plancton)
 
             if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
                 venceu = pygame.mixer.Sound('venceu.wav')
@@ -80,6 +82,8 @@ def game():
                 PontuacaoContagem.vidas = 3
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "win"
+                SpriteGroups.todas_sprites.add(BobGroup.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.plancton)
             SpriteGroups.todas_sprites.draw(tela)
             SpriteGroups.todas_sprites.update()
             tela.blit(posicao, (20, 20))
