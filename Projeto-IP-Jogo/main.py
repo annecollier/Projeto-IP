@@ -44,6 +44,7 @@ def game():
     relogio = pygame.time.Clock()
     status = "start"
 
+    # looping principal do jogo:
     while True:
         if status == "game":
             tela = pygame.display.set_mode((largura, altura))
@@ -56,13 +57,18 @@ def game():
             msg1 = f'    : {PontuacaoContagem.burguer}       : {PontuacaoContagem.refri}       :  {PontuacaoContagem.fries}       :{PontuacaoContagem.vidas}'
             posicao = txt.render(msg1, True, (0, 110, 110))
             for event in pygame.event.get():
+                # condição para sair do jogo
                 if event.type == QUIT:
                     pygame.quit()
                     exit()
+            # retornando as funções de determinação das posições do bob e do plankton:
             if pygame.key.get_pressed():
                 BobGroup.bob.posicao()
                 BobGroup.plancton.posicao()
 
+            # se as vidas acabarem e o jogador perder o jogo:
+            # definindo som a ser emitido
+            # novo status
             if PontuacaoContagem.vidas == 0:
                 morte = pygame.mixer.Sound('morte.wav')
                 pygame.mixer.Sound.set_volume(morte, 1)
@@ -74,6 +80,9 @@ def game():
                 SpriteGroups.todas_sprites.add(BobGroup.bob)
                 SpriteGroups.todas_sprites.add(BobGroup.plancton)
 
+            # se coletar todos os itens e vencer:
+            # definindo som
+            # novo status
             if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
                 venceu = pygame.mixer.Sound('venceu.wav')
                 pygame.mixer.Sound.set_volume(venceu, 1)

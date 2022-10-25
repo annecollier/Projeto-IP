@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 
-
+# definindo a sprite do Bob:
 class Sponge(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -11,14 +11,16 @@ class Sponge(pygame.sprite.Sprite):
         self.atual = 0
         self.image = self.sprites[self.atual]
         self.image = pygame.transform.scale(self.image, (44, 44))
-
         self.rect = self.image.get_rect()
         self.x_bob = 100
         self.y_bob = 100
         self.rect.topleft = self.x_bob,self.y_bob
         self.animar = False
+
+    # função que define a posição do Bob:
     def posicao(self):
         self.animar = True
+        # modificando as coordenadas do Bob de acordo com a tecla pressionada no teclado (w, a, s, d):
         if pygame.key.get_pressed()[K_a]:
             self.x_bob -= 3
             if self.x_bob <= 0:
@@ -39,6 +41,8 @@ class Sponge(pygame.sprite.Sprite):
             if self.y_bob >= 580:
                 self.y_bob = 580
             self.rect.topleft = self.x_bob,self.y_bob
+
+    # atualizando a sprite:
     def update(self):
         if self.animar == True:
             self.atual += 0.05
