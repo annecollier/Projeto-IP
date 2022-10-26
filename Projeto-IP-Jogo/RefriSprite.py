@@ -28,7 +28,7 @@ class Refri(pygame.sprite.Sprite):
         # se o bob colidir com a soda, a sprite é eliminada
         if self.rect.colliderect(BobGroup.bob.rect):
             print('Refri Coletado!')
-            coletou = pygame.mixer.Sound('temacoletados.wav')
+            coletou = pygame.mixer.Sound('sons/temacoletados.wav')
             pygame.mixer.Sound.set_volume(coletou, 0.2)
             coletou.play()
             PontuacaoContagem.refri += 1

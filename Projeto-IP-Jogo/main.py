@@ -23,7 +23,7 @@ def game():
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
     pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.load('music_bob.mp3')
+    pygame.mixer.music.load('sons\music_bob.mp3')
     pygame.mixer.music.play(-1)
 
     altura = 640
@@ -77,7 +77,7 @@ def game():
             # definindo som a ser emitido
             # novo status
             if PontuacaoContagem.vidas == 0:
-                morte = pygame.mixer.Sound('morte.wav')
+                morte = pygame.mixer.Sound('sons/morte.wav')
                 pygame.mixer.Sound.set_volume(morte, 1)
                 morte.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
@@ -91,7 +91,7 @@ def game():
             # definindo som
             # novo status
             if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
-                venceu = pygame.mixer.Sound('venceu.wav')
+                venceu = pygame.mixer.Sound('sons/venceu.wav')
                 pygame.mixer.Sound.set_volume(venceu, 1)
                 venceu.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
