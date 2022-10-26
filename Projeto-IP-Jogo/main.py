@@ -22,9 +22,6 @@ def game():
 
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
-    pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.load('sons\music_bob.mp3')
-    pygame.mixer.music.play(-1)
 
     altura = 640
     largura = 1024
@@ -90,7 +87,26 @@ def game():
             # se coletar todos os itens e vencer:
             # definindo som
             # novo status
-            if PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5:
+            if (PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5) and status != "fase_2":
+                venceu = pygame.mixer.Sound('sons/venceu.wav')
+                pygame.mixer.Sound.set_volume(venceu, 1)
+                venceu.play()
+                PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
+                PontuacaoContagem.vidas = 3
+                SpriteGroups.todas_sprites = SpriteGroups.desenhar()
+                status = "fase_2"
+                SpriteGroups.todas_sprites.add(BobGroup.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.plancton)
+            SpriteGroups.todas_sprites.draw(tela)
+            SpriteGroups.todas_sprites.update()
+            tela.blit(posicao, (3, 20))
+            tela.blit(posicao2, (3, 70))
+            tela.blit(posicao3, (3, 115))
+            tela.blit(posicao4, (3, 160))
+            pygame.display.flip()
+            pygame.display.update()
+
+            if (PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5) and status == "fase_2":
                 venceu = pygame.mixer.Sound('sons/venceu.wav')
                 pygame.mixer.Sound.set_volume(venceu, 1)
                 venceu.play()
@@ -107,6 +123,57 @@ def game():
             tela.blit(posicao3, (3, 115))
             tela.blit(posicao4, (3, 160))
             pygame.display.flip()
+            pygame.display.update()
+
+        if status == "fase_2":
+            altura = 640
+            largura = 1024
+            fundo = pygame.image.load("Fundos/Background.png")
+            tela = pygame.display.set_mode((largura, altura))
+            tela.blit(fundo, (0, 0))
+            menu_inicial_pos = pygame.mouse.get_pos()
+
+            titulo = get_font(45).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
+            titulo_espaco = titulo.get_rect(center=(518, 100))
+            tela.blit(titulo, titulo_espaco)
+            historia1 = get_font(20).render("Mais uma vez a receita do tão aclamado", True, "#EEE8AA")
+            historia_espaco1 = historia1.get_rect(center=(510, 240))
+            tela.blit(historia1, historia_espaco1)
+            historia2 = get_font(20).render("Hambúrguer de Siri está em perigo! Seu", True, "#EEE8AA")
+            historia_espaco2 = historia2.get_rect(center=(510, 270))
+            tela.blit(historia2, historia_espaco2)
+            historia3 = get_font(20).render("trabalho, no jogo, será ajudar o Bob a ", True, "#EEE8AA")
+            historia_espaco3 = historia3.get_rect(center=(510, 300))
+            tela.blit(historia3, historia_espaco3)
+            historia4 = get_font(20).render("coletar todos os itens dos seus pedidos", True, "#EEE8AA")
+            historia_espaco4 = historia4.get_rect(center=(510, 330))
+            tela.blit(historia4, historia_espaco4)
+            historia5 = get_font(20).render(" e não deixar que o Plancton o alcance.", True, "#EEE8AA")
+            historia_espaco5 = historia5.get_rect(center=(510, 360))
+            tela.blit(historia5, historia_espaco5)
+
+            voltar = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(290, 530),
+                               text_input="VOLTAR", font=get_font(30), base_color="#d7fcd4",
+                               hovering_color="White")
+            iniciar = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(718, 530),
+                            text_input="FASE 2", font=get_font(30), base_color="#d7fcd4",
+                            hovering_color="White")
+
+            for button in [voltar, iniciar]:
+                button.changeColor(menu_inicial_pos)
+                button.update(tela)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if voltar.checkForInput(menu_inicial_pos):
+                        status = "instrucoes2"
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if iniciar.checkForInput(menu_inicial_pos):
+                        status = "game"
+
             pygame.display.update()
 
         if status == "start":
@@ -171,7 +238,7 @@ def game():
             historia4 = get_font(20).render("coletar todos os itens dos seus pedidos", True, "#EEE8AA")
             historia_espaco4 = historia4.get_rect(center=(510, 330))
             tela.blit(historia4, historia_espaco4)
-            historia5 = get_font(20).render(" e não deixar que o Plancton alcance ele.", True, "#EEE8AA")
+            historia5 = get_font(20).render(" e não deixar que o Plancton o alcance.", True, "#EEE8AA")
             historia_espaco5 = historia5.get_rect(center=(510, 360))
             tela.blit(historia5, historia_espaco5)
 
