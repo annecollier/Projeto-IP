@@ -13,8 +13,8 @@ class Plancton(pygame.sprite.Sprite):
         self.image = self.sprites[self.atual]
         self.image = pygame.transform.scale(self.image, (40.3, 71.5))
         self.rect = self.image.get_rect()
-        self.x_planc = randint(40,980)
-        self.y_planc = randint(40,600)
+        self.x_planc = randint(65,980)
+        self.y_planc = randint(20,580)
         self.change_position = 1.5
         self.rect.topleft = self.x_planc,self.y_planc
         self.colidiu = False
@@ -30,7 +30,9 @@ class Plancton(pygame.sprite.Sprite):
         return self
     def descendo(self):
         self.y_planc -= self.change_position
-        if self.y_planc <= 0:
+        if (self.y_planc <= 185 and self.y_planc >= 183) and self.x_planc <= 65:
+            self.ida_vertical = True
+        elif self.y_planc <= 0:
             self.ida_vertical = True
         return self
     def direita(self):
@@ -40,7 +42,9 @@ class Plancton(pygame.sprite.Sprite):
         return self
     def esquerda(self):
         self.x_planc -= self.change_position
-        if self.x_planc <= 0:
+        if (self.x_planc <= 65 and self.x_planc >= 63) and self.y_planc <= 185:
+            self.ida_horizontal = True
+        elif self.x_planc <= 0:
             self.ida_horizontal = True
         return self
     # verifica a condição do plankton e chama as funções anteriores, de mudar de direção, quando necessário:

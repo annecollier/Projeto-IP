@@ -13,7 +13,7 @@ class Sponge(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (44, 44))
         self.rect = self.image.get_rect()
         self.x_bob = 100
-        self.y_bob = 100
+        self.y_bob = 55
         self.rect.topleft = self.x_bob,self.y_bob
         self.animar = False
 
@@ -23,18 +23,22 @@ class Sponge(pygame.sprite.Sprite):
         # modificando as coordenadas do Bob de acordo com a tecla pressionada no teclado (w, a, s, d):
         if pygame.key.get_pressed()[K_a]:
             self.x_bob -= 3
-            if self.x_bob <= 0:
-                self.x_bob = 0
+            if (self.x_bob <= 65 and self.x_bob >= 62) and self.y_bob <= 185:
+                self.x_bob = 65
+            if self.x_bob <= 20:
+                self.x_bob = 20
             self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_d]:
             self.x_bob +=3
-            if self.x_bob >= 970:
-                self.x_bob = 970
+            if self.x_bob >= 980:
+                self.x_bob = 980
             self.rect.topleft = self.x_bob,self.y_bob
         if pygame.key.get_pressed()[K_w]:
             self.y_bob -= 3
-            if self.y_bob <= 52:
-                self.y_bob = 52
+            if (self.y_bob <= 185 and self.y_bob >= 182) and self.x_bob <= 65:
+                self.y_bob = 185
+            if self.y_bob <= 20:
+                self.y_bob = 20
             self.rect.topleft = self.x_bob,self.y_bob
         if pygame.key.get_pressed()[K_s]:
             self.y_bob += 3
