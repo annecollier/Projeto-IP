@@ -50,12 +50,19 @@ def game():
             tela = pygame.display.set_mode((largura, altura))
             relogio.tick(100)
             tela.blit(background, (0, 0))
-            tela.blit(vidas, (218, 22))
+            tela.blit(vidas, (15, 162))
             tela.blit(burguer, (15, 22))
-            tela.blit(soda, (82, 13))
-            tela.blit(fries, (145, 17))
-            msg1 = f'    : {PontuacaoContagem.burguer}       : {PontuacaoContagem.refri}       :  {PontuacaoContagem.fries}       :{PontuacaoContagem.vidas}'
-            posicao = txt.render(msg1, True, (0, 110, 110))
+            tela.blit(soda, (15, 59))
+            tela.blit(fries, (15, 112))
+            msg1 = f'       : {PontuacaoContagem.burguer}'
+            msg2 = f'       : {PontuacaoContagem.refri}'
+            msg3 = f'       : {PontuacaoContagem.fries}'
+            msg4 = f'       : {PontuacaoContagem.vidas}'
+            posicao = txt.render(msg1, True, (250, 0, 90))
+            posicao2 = txt.render(msg2, True, (250, 0, 90))
+            posicao3 = txt.render(msg3, True, (250, 0, 90))
+            posicao4 = txt.render(msg4, True, (250, 0, 90))
+
             for event in pygame.event.get():
                 # condição para sair do jogo
                 if event.type == QUIT:
@@ -95,7 +102,10 @@ def game():
                 SpriteGroups.todas_sprites.add(BobGroup.plancton)
             SpriteGroups.todas_sprites.draw(tela)
             SpriteGroups.todas_sprites.update()
-            tela.blit(posicao, (20, 20))
+            tela.blit(posicao, (3, 20))
+            tela.blit(posicao2, (3, 70))
+            tela.blit(posicao3, (3, 115))
+            tela.blit(posicao4, (3, 160))
             pygame.display.flip()
             pygame.display.update()
 
