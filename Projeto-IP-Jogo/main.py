@@ -73,6 +73,42 @@ def game():
                 BobGroup.bob.posicao()
                 BobGroup.plancton.posicao()
 
+            # jogo da fase 2:
+            if status == "game_2":
+                tela = pygame.display.set_mode((largura, altura))
+                relogio.tick(100)
+                tela.blit(background, (0, 0))
+                tela.blit(vidas, (15, 162))
+                tela.blit(burguer, (15, 22))
+                tela.blit(soda, (15, 59))
+                tela.blit(fries, (15, 112))
+                msg1 = f'       : {PontuacaoContagem.burguer}'
+                msg2 = f'       : {PontuacaoContagem.refri}'
+                msg3 = f'       : {PontuacaoContagem.fries}'
+                msg4 = f'       : {PontuacaoContagem.vidas}'
+                posicao = txt.render(msg1, True, (250, 0, 90))
+                posicao2 = txt.render(msg2, True, (250, 0, 90))
+                posicao3 = txt.render(msg3, True, (250, 0, 90))
+                posicao4 = txt.render(msg4, True, (250, 0, 90))
+
+                for event in pygame.event.get():
+                    # condição para sair do jogo
+                    if event.type == QUIT:
+                        pygame.quit()
+                        exit()
+                # retornando as funções de determinação das posições do bob e do plankton:
+                if pygame.key.get_pressed():
+                    BobGroup.bob.posicao()
+                    BobGroup.plancton.posicao()
+            SpriteGroups.todas_sprites.draw(tela)
+            SpriteGroups.todas_sprites.update()
+            tela.blit(posicao, (3, 20))
+            tela.blit(posicao2, (3, 70))
+            tela.blit(posicao3, (3, 115))
+            tela.blit(posicao4, (3, 160))
+            pygame.display.flip()
+            pygame.display.update()
+
             # se as vidas acabarem e o jogador perder o jogo:
             # definindo som a ser emitido
             # novo status
@@ -139,19 +175,19 @@ def game():
             titulo = get_font(45).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
             titulo_espaco = titulo.get_rect(center=(518, 100))
             tela.blit(titulo, titulo_espaco)
-            historia1 = get_font(20).render("Mais uma vez a receita do tão aclamado", True, "#EEE8AA")
+            historia1 = get_font(20).render("Parabéns!!! Você conseguiu completar o ", True, "#EEE8AA")
             historia_espaco1 = historia1.get_rect(center=(510, 240))
             tela.blit(historia1, historia_espaco1)
-            historia2 = get_font(20).render("Hambúrguer de Siri está em perigo! Seu", True, "#EEE8AA")
+            historia2 = get_font(20).render("pedido sem que o Plankton o pegasse.", True, "#EEE8AA")
             historia_espaco2 = historia2.get_rect(center=(510, 270))
             tela.blit(historia2, historia_espaco2)
-            historia3 = get_font(20).render("trabalho, no jogo, será ajudar o Bob a ", True, "#EEE8AA")
+            historia3 = get_font(20).render("Mas agora a situação está ficando cada ", True, "#EEE8AA")
             historia_espaco3 = historia3.get_rect(center=(510, 300))
             tela.blit(historia3, historia_espaco3)
-            historia4 = get_font(20).render("coletar todos os itens dos seus pedidos", True, "#EEE8AA")
+            historia4 = get_font(20).render("vez mais difícil. O siri Cascudo conta", True, "#EEE8AA")
             historia_espaco4 = historia4.get_rect(center=(510, 330))
             tela.blit(historia4, historia_espaco4)
-            historia5 = get_font(20).render(" e não deixar que o Plancton o alcance.", True, "#EEE8AA")
+            historia5 = get_font(20).render("com a sua ajuda. Aceita o desafio?", True, "#EEE8AA")
             historia_espaco5 = historia5.get_rect(center=(510, 360))
             tela.blit(historia5, historia_espaco5)
 
@@ -172,10 +208,10 @@ def game():
                     exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if voltar.checkForInput(menu_inicial_pos):
-                        status = "instrucoes2"
+                        status = "start"
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if iniciar.checkForInput(menu_inicial_pos):
-                        status = "game"
+                        status = "game_2"
 
             pygame.display.update()
 
