@@ -1,5 +1,7 @@
 import pygame
 from random import randint
+
+import ColetaveisMenu
 import RefriSprite
 import BurguerSprite
 import FriesSprite
@@ -21,5 +23,16 @@ def bob_desenho():
     bob_menu = pygame.sprite.Group()
     return bob_menu
 
+def bob_desenho2():
+    personagensmenu2 = pygame.sprite.Group()
+    refrimenu = ColetaveisMenu.RefriMenu(randint(65, 980), randint(40, 580))
+    personagensmenu2.add(refrimenu)
+    burguermenu = ColetaveisMenu.BurguerMenu(randint(65, 980), randint(40, 580))
+    personagensmenu2.add(burguermenu)
+    friesmenu = ColetaveisMenu.FriesMenu(randint(65, 980), randint(40, 580))
+    personagensmenu2.add(friesmenu)
+    return personagensmenu2
+
 todas_sprites = desenhar()
 bob_menu = bob_desenho()
+personagensmenu2 = bob_desenho2()
