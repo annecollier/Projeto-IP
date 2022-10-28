@@ -13,8 +13,8 @@ class BobMenu(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (44, 44))
 
         self.rect = self.image.get_rect()
-        self.x_bob = 400
-        self.y_bob = 400
+        self.x_bob = 200
+        self.y_bob = 350
         self.rect.topleft = self.x_bob,self.y_bob
         self.animar = False
     def posicao_menu(self):

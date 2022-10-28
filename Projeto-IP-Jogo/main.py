@@ -10,6 +10,7 @@ from instrucoes import instrucoes3
 import BobGroup
 import PontuacaoContagem
 import SpriteGroups
+import VidasMenu
 
 from SpongeSprite import Sponge
 
@@ -22,9 +23,9 @@ def game():
 
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
-    pygame.mixer.music.set_volume(1.0)
-    pygame.mixer.music.load('sons\music_bob.mp3')
-    pygame.mixer.music.play(-1)
+    #pygame.mixer.music.set_volume(1.0)
+    #pygame.mixer.music.load('sons\music_bob.mp3')
+    #pygame.mixer.music.play(-1)
 
     altura = 640
     largura = 1024
@@ -366,21 +367,21 @@ def game():
             titulo = get_font(45).render("INSTRUÇÕES", True, "#EEE8AA")
             titulo_espaco = titulo.get_rect(center=(518, 100))
             tela.blit(titulo, titulo_espaco)
-            historia1 = get_font(20).render("Mais uma vez a receita do tão aclamado", True, "#EEE8AA")
+            historia1 = get_font(20).render("Agora que você já sabe se mover, você", True, "#EEE8AA")
             historia_espaco1 = historia1.get_rect(center=(510, 160))
             tela.blit(historia1, historia_espaco1)
-            historia2 = get_font(20).render("Hambúrguer de Siri está em perigo! Seu", True, "#EEE8AA")
+            historia2 = get_font(20).render("deve tentar coletar todos esses itens", True, "#EEE8AA")
             historia_espaco2 = historia2.get_rect(center=(510, 190))
             tela.blit(historia2, historia_espaco2)
 
             anterior = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(290, 530),
                              text_input="ANTERIOR", font=get_font(30), base_color="#d7fcd4",
                              hovering_color="White")
-            jogar = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(718, 530),
-                          text_input="JOGAR", font=get_font(30), base_color="#d7fcd4",
+            seguinte = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(718, 530),
+                          text_input="SEGUINTE", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
 
-            for button in [anterior, jogar]:
+            for button in [anterior, seguinte]:
                 button.changeColor(menu_instrucao3_pos)
                 button.update(tela)
 
@@ -392,13 +393,63 @@ def game():
                     if anterior.checkForInput(menu_instrucao3_pos):
                         status = "instrucoes2"
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if jogar.checkForInput(menu_instrucao3_pos):
-                        status = "game"
+                    if seguinte.checkForInput(menu_instrucao3_pos):
+                        status = "instrucoes4"
                 if pygame.key.get_pressed():
                     BobGroup.bob_menu2.posicao_menu()
 
             SpriteGroups.personagensmenu2.draw(tela)
             SpriteGroups.personagensmenu2.update()
+            pygame.display.flip()
+            pygame.display.update()
+
+        if status == "instrucoes4":
+            altura = 640
+            largura = 1024
+            fundo = pygame.image.load("Fundos/Background.png")
+            tela = pygame.display.set_mode((largura, altura))
+            tela.blit(fundo, (0, 0))
+            menu_instrucao4_pos = pygame.mouse.get_pos()
+
+            titulo = get_font(45).render("INSTRUÇÕES", True, "#EEE8AA")
+            titulo_espaco = titulo.get_rect(center=(518, 100))
+            tela.blit(titulo, titulo_espaco)
+            historia1 = get_font(20).render("Agora que você ja sabe andar e coletar,", True, "#EEE8AA")
+            historia_espaco1 = historia1.get_rect(center=(510, 160))
+            tela.blit(historia1, historia_espaco1)
+            historia2 = get_font(20).render("Experimente chegar perto do plâncton!", True, "#EEE8AA")
+            historia_espaco2 = historia2.get_rect(center=(510, 190))
+            tela.blit(historia2, historia_espaco2)
+            vidasmenu = f'       : {VidasMenu.vidas}'
+            posicaovidasmenu = txt.render(vidasmenu, True, (250, 0, 90))
+
+            anterior = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(290, 530),
+                             text_input="ANTERIOR", font=get_font(30), base_color="#d7fcd4",
+                             hovering_color="White")
+            jogar = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(718, 530),
+                          text_input="JOGAR", font=get_font(30), base_color="#d7fcd4",
+                          hovering_color="White")
+
+            for button in [anterior, jogar]:
+                button.changeColor(menu_instrucao4_pos)
+                button.update(tela)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if anterior.checkForInput(menu_instrucao4_pos):
+                        status = "instrucoes3"
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if jogar.checkForInput(menu_instrucao4_pos):
+                        status = "game"
+                if pygame.key.get_pressed():
+                    BobGroup.bob_menu3.posicao_menu()
+
+            SpriteGroups.personagensmenu3.draw(tela)
+            SpriteGroups.personagensmenu3.update()
+            tela.blit(posicaovidasmenu, (3, 160))
             pygame.display.flip()
             pygame.display.update()
 
