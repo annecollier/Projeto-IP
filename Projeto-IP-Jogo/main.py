@@ -306,8 +306,6 @@ def game():
             pygame.display.update()
 
         if status == "instrucoes2":
-            relogio = pygame.time.Clock()
-            relogio.tick(100)
             altura = 640
             largura = 1024
             fundo = pygame.image.load("Fundos/Background.png")
@@ -321,16 +319,24 @@ def game():
             historia1 = get_font(20).render("Para se movimentar aperte as teclas do teclado:", True, "#EEE8AA")
             historia_espaco1 = historia1.get_rect(center=(510, 160))
             tela.blit(historia1, historia_espaco1)
-            historia2 = get_font(20).render(" W, A, S, D", True, "#EEE8AA")
-            historia_espaco2 = historia2.get_rect(center=(510, 190))
-            tela.blit(historia2, historia_espaco2)
 
             seguinte = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(518, 530),
                              text_input="SEGUINTE", font=get_font(30), base_color="#d7fcd4",
                              hovering_color="White")
+            W = botao(image=pygame.image.load("MenuAssets/Teclas.png"), pos=(518, 210),
+                             text_input="W", font=get_font(30), base_color="#d7fcd4",
+                             hovering_color="White")
+            A = botao(image=pygame.image.load("MenuAssets/Teclas.png"), pos=(468, 260),
+                             text_input="A", font=get_font(30), base_color="#d7fcd4",
+                             hovering_color="White")
+            S = botao(image=pygame.image.load("MenuAssets/Teclas.png"), pos=(518, 260),
+                             text_input="S", font=get_font(30), base_color="#d7fcd4",
+                             hovering_color="White")
+            D = botao(image=pygame.image.load("MenuAssets/Teclas.png"), pos=(568, 260),
+                             text_input="D", font=get_font(30), base_color="#d7fcd4",
+                             hovering_color="White")
 
-
-            for button in [seguinte]:
+            for button in [seguinte, W, A, S, D]:
                 button.changeColor(menu_instrucao2_pos)
                 button.update(tela)
 
@@ -388,6 +394,12 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if jogar.checkForInput(menu_instrucao3_pos):
                         status = "game"
+                if pygame.key.get_pressed():
+                    BobGroup.bob_menu2.posicao_menu()
+
+            SpriteGroups.personagensmenu2.draw(tela)
+            SpriteGroups.personagensmenu2.update()
+            pygame.display.flip()
             pygame.display.update()
 
         if status == "win":
