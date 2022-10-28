@@ -1,8 +1,7 @@
 import pygame
 from pygame.locals import *
 
-
-class BobMenu2(pygame.sprite.Sprite):
+class BobMenu3(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.sprites = []
@@ -47,4 +46,3 @@ class BobMenu2(pygame.sprite.Sprite):
                 self.animar = False
             self.image = self.sprites[int(self.atual)]
             self.image = pygame.transform.scale(self.image, (44, 44))
-

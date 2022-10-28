@@ -25,14 +25,19 @@ def bob_desenho():
 
 def bob_desenho2():
     personagensmenu2 = pygame.sprite.Group()
-    refrimenu = ColetaveisMenu.RefriMenu(randint(65, 980), randint(40, 580))
+    refrimenu = ColetaveisMenu.RefriMenu()
     personagensmenu2.add(refrimenu)
-    burguermenu = ColetaveisMenu.BurguerMenu(randint(65, 980), randint(40, 580))
+    burguermenu = ColetaveisMenu.BurguerMenu()
     personagensmenu2.add(burguermenu)
-    friesmenu = ColetaveisMenu.FriesMenu(randint(65, 980), randint(40, 580))
+    friesmenu = ColetaveisMenu.FriesMenu()
     personagensmenu2.add(friesmenu)
     return personagensmenu2
+
+def bob_desenho3():
+    personagensmenu3 = pygame.sprite.Group()
+    return personagensmenu3
 
 todas_sprites = desenhar()
 bob_menu = bob_desenho()
 personagensmenu2 = bob_desenho2()
+personagensmenu3 = bob_desenho3()
