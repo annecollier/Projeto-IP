@@ -49,7 +49,7 @@ class Sponge(pygame.sprite.Sprite):
     # atualizando a sprite:
     def update(self):
         if self.animar == True:
-            self.atual += 0.05
+            self.atual += 0.03
             if self.atual >= len(self.sprites):
                 self.atual = 0
                 self.animar = False

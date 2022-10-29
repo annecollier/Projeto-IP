@@ -3,16 +3,13 @@ from pygame.locals import *
 from sys import exit
 from botoes import botao
 
-from instrucoes import instrucoes1
-from instrucoes import instrucoes2
-from instrucoes import instrucoes3
+
 
 import BobGroup
 import PontuacaoContagem
 import SpriteGroups
 import VidasMenu
 
-from SpongeSprite import Sponge
 
 def get_font(size):
     return pygame.font.Font("MenuAssets/font.ttf", size)
@@ -225,18 +222,15 @@ def game():
             MENU_TEXT = get_font(48).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
             MENU_RECT = MENU_TEXT.get_rect(center=(518, 100))
 
-            PLAY_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(518, 250),
+            PLAY_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(518, 350),
                                 text_input="INICIAR", font=get_font(70), base_color="#d7fcd4",
                                 hovering_color="White")
-            OPTIONS_BUTTON = botao(image=pygame.image.load("MenuAssets/Options Rect.png"), pos=(518, 400),
-                                   text_input="OPÇÕES", font=get_font(70), base_color="#d7fcd4",
-                                   hovering_color="White")
             QUIT_BUTTON = botao(image=pygame.image.load("MenuAssets/Quit Rect.png"), pos=(920, 590),
                                 text_input="SAIR", font=get_font(35), base_color="#d7fcd4", hovering_color="White")
 
             tela.blit(MENU_TEXT, MENU_RECT)
 
-            for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
+            for button in [PLAY_BUTTON, QUIT_BUTTON]:
                 button.changeColor(MENU_MOUSE_POS)
                 button.update(tela)
 
@@ -247,8 +241,6 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
                         status = "instrucoes1"
-                    if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                        options()
                     if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                         pygame.quit()
                         exit()
@@ -486,13 +478,15 @@ def game():
             OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
             tela.blit(fundo, (0, 0))
 
-            texto_gameover = get_font(45).render("GAME OVER", True, "Black")
+            texto_gameover = get_font(70).render("GAME OVER!", True, "#EEE8AA")
             OPTIONS_RECT = texto_gameover.get_rect(center=(518, 260))
             tela.blit(texto_gameover, OPTIONS_RECT)
+            fundo_jogar_novamente = pygame.image.load('MenuAssets/Quit Rect.png')
+            fundo_jogar_novamente = pygame.transform.scale(fundo_jogar_novamente, (650, 65))
+            OPTIONS_BACK = botao(image=fundo_jogar_novamente, pos=(518, 360),
+                                 text_input="JOGAR NOVAMENTE", font=get_font(40), base_color="#EEE8AA",
+                                 hovering_color="#d7fcd4")
 
-            OPTIONS_BACK = botao(image=None, pos=(518, 460),
-                                 text_input="Tente de novo", font=get_font(70), base_color="Black",
-                                 hovering_color="Green")
 
             OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
             OPTIONS_BACK.update(tela)
