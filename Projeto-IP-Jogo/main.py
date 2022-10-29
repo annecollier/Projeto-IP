@@ -25,9 +25,9 @@ def game():
 
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
-    #pygame.mixer.music.set_volume(1.0)
-    #pygame.mixer.music.load('sons\music_bob.mp3')
-    #pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(1.0)
+    pygame.mixer.music.load('sons\music_bob.mp3')
+    pygame.mixer.music.play(-1)
 
     altura = 640
     largura = 1024
