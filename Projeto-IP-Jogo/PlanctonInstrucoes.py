@@ -1,6 +1,6 @@
 import pygame
 import BobGroup
-import VidasMenu
+import PontuacaoContagem
 
 class PlanctonMenu(pygame.sprite.Sprite):
     def __init__(self):
@@ -23,7 +23,7 @@ class PlanctonMenu(pygame.sprite.Sprite):
         # perdendo 1 vida quando o Bob colide com o plankton
         if self.rect.colliderect(BobGroup.bob_menu3.rect) and (self.colidiu == False):
             print('Vida perdida!')
-            VidasMenu.vidas -= 1
+            PontuacaoContagem.vidas_menu -= 1
             perdeu = pygame.mixer.Sound('sons/inimigo.wav')
             pygame.mixer.Sound.set_volume(perdeu, 0.2)
             perdeu.play()
