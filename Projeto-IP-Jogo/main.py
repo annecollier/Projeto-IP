@@ -83,9 +83,10 @@ def game():
                 PontuacaoContagem.vidas = 3
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "gameover"
+                fase = 0
                 SpriteGroups.todas_sprites.add(BobGroup.bob)
                 SpriteGroups.todas_sprites.add(BobGroup.plancton)
-                SpriteGroups.todas_sprites.add(BobGroup.plancton2)
+
 
             # se coletar todos os itens e vencer:
             # definindo som
