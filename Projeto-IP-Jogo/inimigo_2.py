@@ -8,7 +8,8 @@ class Plancton_2(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.sprites = []
-        self.sprites.append(pygame.image.load('sprites/plancton.png'))
+        for i in range(16):
+            self.sprites.append(pygame.image.load(f'sprites/inimigo_2/{i}.png'))
         self.atual = 0
         self.image = self.sprites[self.atual]
         self.image = pygame.transform.scale(self.image, (40.3, 71.5))
@@ -61,6 +62,11 @@ class Plancton_2(pygame.sprite.Sprite):
 
     # atualizando sprite
     def update(self):
+        self.atual += 0.05
+        if self.atual >= len(self.sprites):
+            self.atual = 0
+        self.image = self.sprites[int(self.atual)]
+        self.image = pygame.transform.scale(self.image, (120, 120))
         # perdendo 1 vida quando o Bob colide com o plankton
         if self.rect.colliderect(BobGroup.bob.rect) and (self.colidiu == False):
             print('Vida perdida!')
