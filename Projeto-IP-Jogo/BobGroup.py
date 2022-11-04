@@ -1,3 +1,4 @@
+#importacoes necessarias
 import SpongeSprite
 import SpriteGroups
 import PlanctonSprite

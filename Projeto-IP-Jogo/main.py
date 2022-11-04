@@ -28,7 +28,7 @@ def game():
 #definicoes basicas (ex: tamanho): tela, icones: bob, vidas e coletaveis
     altura = 640
     largura = 1024
-    background = pygame.image.load(('fundomapa.jpg'))
+    background = pygame.image.load(('Fundos/fundomapa.jpg'))
     icon = pygame.image.load('sprites/bob_1.png')
     vidas = pygame.image.load('coletaveis/vidas.png')
     burguer = pygame.image.load('coletaveis/burguer1.png')
