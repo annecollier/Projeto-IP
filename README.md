@@ -5,7 +5,7 @@ Instruções para rodar o sistema:
 
 2º - Clonar este repositório ou baixar o aquivo zip.
 
-3º - Caso tenha baixado o arquivo zip, extraia os arquivos antes de abri-los no IDE de sua preferência
+3º - Caso tenha baixado o arquivo zip, extraia os arquivos antes de abri-los no IDE de sua preferência.
 
 4º - Rodar o arquivo main.py.
 
