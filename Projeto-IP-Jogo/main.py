@@ -124,11 +124,11 @@ def game():
                 venceu.play()
                 PontuacaoContagem.burguer = PontuacaoContagem.refri = PontuacaoContagem.fries = 0
                 PontuacaoContagem.vidas = 3
+                fase = 0
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "win"
                 SpriteGroups.todas_sprites.add(BobGroup.bob)
                 SpriteGroups.todas_sprites.add(BobGroup.plancton)
-                SpriteGroups.todas_sprites.add(BobGroup.plancton2)
 
             #preparando para fase 2
             SpriteGroups.todas_sprites.draw(tela)
