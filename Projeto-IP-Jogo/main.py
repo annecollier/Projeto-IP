@@ -1,3 +1,4 @@
+#realizando as importações necessárias
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -7,10 +8,11 @@ import BobGroup
 import PontuacaoContagem
 import SpriteGroups
 
+#definindo funcao fonte
 def get_font(size):
     return pygame.font.Font("MenuAssets/font.ttf", size)
 
-
+#definindo funcao game
 def game():
     global fase
     fase = 0
@@ -18,10 +20,12 @@ def game():
 
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
+#musica de fundo
   #  pygame.mixer.music.set_volume(1.0)
   #  pygame.mixer.music.load('sons\music_bob.mp3')
   #  pygame.mixer.music.play(-1)
 
+#definicoes basicas (ex: tamanho): tela, icones: bob, vidas e coletaveis
     altura = 640
     largura = 1024
     background = pygame.image.load(('fundomapa.jpg'))
@@ -42,6 +46,7 @@ def game():
 
     # looping principal do jogo:
     while True:
+        #iniciando o jogo: definindo tamanhos, textos e icones de contagem dos coletaveis
         if status == "game":
             tela = pygame.display.set_mode((largura, altura))
             relogio.tick(100)
@@ -110,6 +115,9 @@ def game():
             pygame.display.flip()
             pygame.display.update()
 
+            #se coletar todos os itens na fase 2
+            #definindo som
+            #definindo novo status
             if (PontuacaoContagem.burguer == PontuacaoContagem.fries == PontuacaoContagem.refri == 5) and fase == 2:
                 venceu = pygame.mixer.Sound('sons/venceu.wav')
                 pygame.mixer.Sound.set_volume(venceu, 1)
@@ -122,7 +130,7 @@ def game():
                 SpriteGroups.todas_sprites.add(BobGroup.plancton)
                 SpriteGroups.todas_sprites.add(BobGroup.plancton2)
 
-
+            #preparando para fase 2
             SpriteGroups.todas_sprites.draw(tela)
             SpriteGroups.todas_sprites.update()
             tela.blit(posicao, (3, 20))
@@ -132,7 +140,9 @@ def game():
             pygame.display.flip()
             pygame.display.update()
 
+        #fase 2:
         if status == "fase_2":
+            #definicoes tela para fase 2
             altura = 640
             largura = 1024
             fundo = pygame.image.load("Fundos/Background.png")
@@ -140,6 +150,7 @@ def game():
             tela.blit(fundo, (0, 0))
             menu_inicial_pos = pygame.mouse.get_pos()
 
+            #menu intermediario
             titulo = get_font(45).render("GET THE B(OB)URGUER!", True, "#EEE8AA")
             titulo_espaco = titulo.get_rect(center=(518, 100))
             tela.blit(titulo, titulo_espaco)
@@ -186,6 +197,7 @@ def game():
 
             pygame.display.update()
 
+        #menu inicial
         if status == "start":
             fundo = pygame.image.load("Fundos/Background.png")
             tela = pygame.display.set_mode((largura, altura))
@@ -220,6 +232,7 @@ def game():
 
             pygame.display.update()
 
+        #menu instrucoes
         if status == "instrucoes1":
             altura = 640
             largura = 1024
@@ -417,6 +430,7 @@ def game():
             pygame.display.flip()
             pygame.display.update()
 
+        #menu vencedor
         if status == "win":
             tela = pygame.display.set_mode((largura, altura))
             OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
@@ -447,6 +461,7 @@ def game():
                         status = "start"
             pygame.display.update()
 
+        #menu gameover
         if status == "gameover":
             tela = pygame.display.set_mode((largura, altura))
             OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
