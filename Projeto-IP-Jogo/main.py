@@ -327,7 +327,7 @@ def game():
                     if seguinte.checkForInput(menu_instrucao2_pos):
                         status = "instrucoes3"
                 if pygame.key.get_pressed():
-                    BobGroup.bob_menu.posicao_menu()
+                    BobGroup.menus.bob_menu.posicao_menu()
 
             SpriteGroups.bob_menu.draw(tela)
             SpriteGroups.bob_menu.update()
@@ -373,7 +373,7 @@ def game():
                     if seguinte.checkForInput(menu_instrucao3_pos):
                         status = "instrucoes4"
                 if pygame.key.get_pressed():
-                    BobGroup.bob_menu2.posicao_menu()
+                    BobGroup.menus.bob_menu2.posicao_menu()
 
             SpriteGroups.personagensmenu2.draw(tela)
             SpriteGroups.personagensmenu2.update()
@@ -422,7 +422,7 @@ def game():
                     if jogar.checkForInput(menu_instrucao4_pos):
                         status = "game"
                 if pygame.key.get_pressed():
-                    BobGroup.bob_menu3.posicao_menu()
+                    BobGroup.menus.bob_menu3.posicao_menu()
 
             SpriteGroups.personagensmenu3.draw(tela)
             SpriteGroups.personagensmenu3.update()

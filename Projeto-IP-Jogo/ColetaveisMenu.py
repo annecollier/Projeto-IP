@@ -22,7 +22,7 @@ class FriesMenu(pygame.sprite.Sprite):
             self.atual = 0
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (29, 31))
-        if self.rect.colliderect(BobGroup.bob_menu2.rect):
+        if self.rect.colliderect(BobGroup.menus.bob_menu2.rect):
             print('Batatinha Coletada!')
             coletou = pygame.mixer.Sound('sons/temacoletados.wav')
             pygame.mixer.Sound.set_volume(coletou, 0.2)
@@ -49,7 +49,7 @@ class BurguerMenu(pygame.sprite.Sprite):
             self.atual = 0
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (28,28))
-        if self.rect.colliderect(BobGroup.bob_menu2.rect):
+        if self.rect.colliderect(BobGroup.menus.bob_menu2.rect):
             print('Burguer Coletado!')
             coletou = pygame.mixer.Sound('sons/temacoletados.wav')
             pygame.mixer.Sound.set_volume(coletou, 0.2)
@@ -78,7 +78,7 @@ class RefriMenu(pygame.sprite.Sprite):
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (25,40))
         # se o bob colidir com a soda, a sprite é eliminada
-        if self.rect.colliderect(BobGroup.bob_menu2.rect):
+        if self.rect.colliderect(BobGroup.menus.bob_menu2.rect):
             print('Refri Coletado!')
             coletou = pygame.mixer.Sound('sons/temacoletados.wav')
             pygame.mixer.Sound.set_volume(coletou, 0.2)

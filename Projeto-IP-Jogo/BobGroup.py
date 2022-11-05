@@ -10,9 +10,6 @@ import BobInstrucoes3
 import PlanctonInstrucoes
 
 
-
-
-
 class Personagens():
     def __init__(self):
         self.bob = SpongeSprite.Sponge()
@@ -26,10 +23,10 @@ class Personagens_menu():
 
     def __init__(self):
 
-        self.bob_menu = Personagens_menu.personagens_menu(self)
-        self.bob_menu2 = Personagens_menu.personagens_menu2(self)
-        self.bob_menu3 = Personagens_menu.personagens_menu3(self)
-        self.plancton_menu = Personagens_menu.personagens_menu3(self)
+        self.bob_menuu = Personagens_menu.personagens_menu(self)
+        self.bob_menuu2 = Personagens_menu.personagens_menu2(self)
+        self.bob_menuu3 = Personagens_menu.personagens_menu3(self)
+
 
 
     def personagens_menu(self):
