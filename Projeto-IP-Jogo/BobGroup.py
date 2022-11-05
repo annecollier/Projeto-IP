@@ -8,14 +8,15 @@ import BobInstrucoes
 import BobInstrucoes2
 import BobInstrucoes3
 import PlanctonInstrucoes
+class Personagens():
+    def __init__(self):
+        self.bob = SpongeSprite.Sponge()
+        self.plancton = PlanctonSprite.Plancton()
+        self.plancton2 = inimigo_2.Plancton_2()
+        SpriteGroups.todas_sprites.add(self.bob)
+        SpriteGroups.todas_sprites.add(self.plancton)
+        #return self.bob, self.plancton, self.plancton2
 
-def personagens():
-    bob = SpongeSprite.Sponge()
-    plancton = PlanctonSprite.Plancton()
-    plancton2 = inimigo_2.Plancton_2()
-    SpriteGroups.todas_sprites.add(bob)
-    SpriteGroups.todas_sprites.add(plancton)
-    return bob, plancton, plancton2
 
 def personagens_menu():
     bob_menu = BobInstrucoes.BobMenu()
@@ -32,7 +33,7 @@ def personagens_menu3():
     SpriteGroups.personagensmenu3.add(plancton_menu)
     return bob_menu3,plancton_menu
 
-bob, plancton, plancton2 = personagens()
+personagens = Personagens()
 bob_menu = personagens_menu()
 bob_menu2 = personagens_menu2()
 bob_menu3,plancton_menu = personagens_menu3()

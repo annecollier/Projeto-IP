@@ -50,19 +50,19 @@ class Plancton(pygame.sprite.Sprite):
     # verifica a condição do plankton e chama as funções anteriores, de mudar de direção, quando necessário:
     def posicao(self):
         if self.ida_horizontal:
-            Plancton.direita(BobGroup.plancton)
+            Plancton.direita(BobGroup.personagens.plancton)
         else:
-            Plancton.esquerda(BobGroup.plancton)
+            Plancton.esquerda(BobGroup.personagens.plancton)
         if self.ida_vertical:
-            Plancton.subindo(BobGroup.plancton)
+            Plancton.subindo(BobGroup.personagens.plancton)
         else:
-            Plancton.descendo(BobGroup.plancton)
+            Plancton.descendo(BobGroup.personagens.plancton)
         self.rect.topleft = self.x_planc, self.y_planc
 
     # atualizando sprite
     def update(self):
         # perdendo 1 vida quando o Bob colide com o plankton
-        if self.rect.colliderect(BobGroup.bob.rect) and (self.colidiu == False):
+        if self.rect.colliderect(BobGroup.personagens.bob.rect) and (self.colidiu == False):
             print('Vida perdida!')
             PontuacaoContagem.vidas -= 1
             perdeu = pygame.mixer.Sound('sons/inimigo.wav')
@@ -70,5 +70,5 @@ class Plancton(pygame.sprite.Sprite):
             perdeu.play()
             self.colidiu = True
         # caso contrário:
-        if not self.rect.colliderect(BobGroup.bob.rect):
+        if not self.rect.colliderect(BobGroup.personagens.bob.rect):
             self.colidiu = False

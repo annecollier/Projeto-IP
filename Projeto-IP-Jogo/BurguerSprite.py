@@ -23,7 +23,7 @@ class Burguer(pygame.sprite.Sprite):
             self.atual = 0
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (28,28))
-        if self.rect.colliderect(BobGroup.bob.rect):
+        if self.rect.colliderect(BobGroup.personagens.bob.rect):
             print('Burguer Coletado!')
             coletou = pygame.mixer.Sound('sons/temacoletados.wav')
             pygame.mixer.Sound.set_volume(coletou, 0.2)

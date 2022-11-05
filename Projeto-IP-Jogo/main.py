@@ -71,10 +71,10 @@ def game():
                     exit()
             # retornando as funções de determinação das posições do bob e do plankton:
             if pygame.key.get_pressed():
-                BobGroup.bob.posicao()
-                BobGroup.plancton.posicao()
+                BobGroup.personagens.bob.posicao()
+                BobGroup.personagens.plancton.posicao()
                 if fase == 2:
-                    BobGroup.plancton2.posicao()
+                    BobGroup.personagens.plancton2.posicao()
 
 
             # se as vidas acabarem e o jogador perder o jogo:
@@ -89,8 +89,8 @@ def game():
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "gameover"
                 fase = 0
-                SpriteGroups.todas_sprites.add(BobGroup.bob)
-                SpriteGroups.todas_sprites.add(BobGroup.plancton)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.plancton)
 
 
             # se coletar todos os itens e vencer:
@@ -104,8 +104,8 @@ def game():
                 PontuacaoContagem.vidas = 3
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "fase_2"
-                SpriteGroups.todas_sprites.add(BobGroup.bob)
-                SpriteGroups.todas_sprites.add(BobGroup.plancton)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.plancton)
             SpriteGroups.todas_sprites.draw(tela)
             SpriteGroups.todas_sprites.update()
             tela.blit(posicao, (3, 20))
@@ -127,8 +127,8 @@ def game():
                 fase = 0
                 SpriteGroups.todas_sprites = SpriteGroups.desenhar()
                 status = "win"
-                SpriteGroups.todas_sprites.add(BobGroup.bob)
-                SpriteGroups.todas_sprites.add(BobGroup.plancton)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.bob)
+                SpriteGroups.todas_sprites.add(BobGroup.personagens.plancton)
 
             #preparando para fase 2
             SpriteGroups.todas_sprites.draw(tela)
@@ -191,7 +191,7 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if iniciar.checkForInput(menu_inicial_pos):
                         status = "game"
-                        SpriteGroups.todas_sprites.add(BobGroup.plancton2)
+                        SpriteGroups.todas_sprites.add(BobGroup.personagens.plancton2)
 
 
 
