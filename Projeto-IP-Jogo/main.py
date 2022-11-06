@@ -417,6 +417,7 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if anterior.checkForInput(menu_instrucao4_pos):
                         status = "instrucoes3"
+                        PontuacaoContagem.vidas_menu = 1
                         SpriteGroups.personagensmenu2 = SpriteGroups.bob_desenho2()
                         SpriteGroups.personagensmenu2.add(BobGroup.menus.bob_menu2)
                         SpriteGroups.personagensmenu2.draw(tela)
