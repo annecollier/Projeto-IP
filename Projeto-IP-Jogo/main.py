@@ -21,9 +21,9 @@ def game():
     txt = pygame.font.SysFont('arial', 25, bold=True, italic=False)
 
 #musica de fundo
-  #  pygame.mixer.music.set_volume(1.0)
-  #  pygame.mixer.music.load('sons\music_bob.mp3')
-  #  pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(1.0)
+    pygame.mixer.music.load('sons\music_bob.mp3')
+    pygame.mixer.music.play(-1)
 
 #definicoes basicas (ex: tamanho): tela, icones: bob, vidas e coletaveis
     altura = 640
@@ -278,6 +278,10 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if instrucoes.checkForInput(menu_instrucao1_pos):
                         status = "instrucoes2"
+                        BobGroup.menus.bob_menu.x_bob = 200
+                        BobGroup.menus.bob_menu.y_bob = 350
+                        SpriteGroups.bob_menu = SpriteGroups.bob_desenho()
+                        SpriteGroups.bob_menu.add(BobGroup.menus.personagens_menu())
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if iniciar.checkForInput(menu_instrucao1_pos):
                         status = "game"
@@ -326,9 +330,16 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if seguinte.checkForInput(menu_instrucao2_pos):
                         status = "instrucoes3"
+                        BobGroup.menus.bob_menu2.x_bob = 200
+                        BobGroup.menus.bob_menu2.y_bob = 320
+                        SpriteGroups.personagensmenu2 = SpriteGroups.bob_desenho2()
+                        SpriteGroups.personagensmenu2.add(BobGroup.menus.personagens_menu2())
+                        SpriteGroups.personagensmenu2.draw(tela)
+                        SpriteGroups.personagensmenu2.update()
                 if pygame.key.get_pressed():
                     BobGroup.menus.bob_menu.posicao_menu()
 
+            BobGroup.menus.bob_menu.posicao_menu()
             SpriteGroups.bob_menu.draw(tela)
             SpriteGroups.bob_menu.update()
             pygame.display.flip()
@@ -369,12 +380,23 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if anterior.checkForInput(menu_instrucao3_pos):
                         status = "instrucoes2"
+                        BobGroup.menus.bob_menu.x_bob = 200
+                        BobGroup.menus.bob_menu.y_bob = 350
+                        SpriteGroups.bob_menu = SpriteGroups.bob_desenho()
+                        SpriteGroups.bob_menu.add(BobGroup.menus.personagens_menu())
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if seguinte.checkForInput(menu_instrucao3_pos):
                         status = "instrucoes4"
+                        PontuacaoContagem.status_menu = "1 VIDA"
+                        BobGroup.menus.bob_menu3.x_bob = 200
+                        BobGroup.menus.bob_menu3.y_bob = 320
+                        SpriteGroups.personagensmenu3 = SpriteGroups.bob_desenho3()
+                        SpriteGroups.personagensmenu3.add(BobGroup.menus.personagens_menu3())
                 if pygame.key.get_pressed():
                     BobGroup.menus.bob_menu2.posicao_menu()
 
+            BobGroup.menus.bob_menu2.posicao_menu()
             SpriteGroups.personagensmenu2.draw(tela)
             SpriteGroups.personagensmenu2.update()
             pygame.display.flip()
@@ -397,8 +419,13 @@ def game():
             historia2 = get_font(20).render("Experimente chegar perto do plâncton!", True, "#EEE8AA")
             historia_espaco2 = historia2.get_rect(center=(510, 190))
             tela.blit(historia2, historia_espaco2)
-            vidasmenu = f'       : {PontuacaoContagem.vidas_menu}'
-            posicaovidasmenu = txt.render(vidasmenu, True, (250, 0, 90))
+            if PontuacaoContagem.status_menu == "1 VIDA":
+                vidasmenu = get_font(20).render(f"{PontuacaoContagem.status_menu}", True, "#006400")
+                vidasmenu_espaco = vidasmenu.get_rect(center=(520, 250))
+            else:
+                vidasmenu = get_font(20).render(f"{PontuacaoContagem.status_menu}", True, "#FF0000")
+                vidasmenu_espaco = vidasmenu.get_rect(center=(515, 250))
+            tela.blit(vidasmenu, vidasmenu_espaco)
 
             anterior = botao(image=pygame.image.load("MenuAssets/Botao Instrucoes.png"), pos=(290, 530),
                              text_input="ANTERIOR", font=get_font(30), base_color="#d7fcd4",
@@ -418,15 +445,24 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if anterior.checkForInput(menu_instrucao4_pos):
                         status = "instrucoes3"
+                        BobGroup.menus.bob_menu2.x_bob = 200
+                        BobGroup.menus.bob_menu2.y_bob = 320
+                        SpriteGroups.personagensmenu2 = SpriteGroups.bob_desenho2()
+                        SpriteGroups.personagensmenu2.add(BobGroup.menus.personagens_menu2())
+                        SpriteGroups.personagensmenu2.draw(tela)
+                        SpriteGroups.personagensmenu2.update()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if jogar.checkForInput(menu_instrucao4_pos):
                         status = "game"
+                        PontuacaoContagem.status_menu = "1 VIDA"
+                        BobGroup.menus.bob_menu3.x_bob = 200
+                        BobGroup.menus.bob_menu3.y_bob = 320
                 if pygame.key.get_pressed():
                     BobGroup.menus.bob_menu3.posicao_menu()
 
+            BobGroup.menus.bob_menu3.posicao_menu()
             SpriteGroups.personagensmenu3.draw(tela)
             SpriteGroups.personagensmenu3.update()
-            tela.blit(posicaovidasmenu, (3, 160))
             pygame.display.flip()
             pygame.display.update()
 
