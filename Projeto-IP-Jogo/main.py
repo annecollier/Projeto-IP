@@ -2,8 +2,8 @@
 import pygame
 from pygame.locals import *
 from sys import exit
-from botoes import botao
 
+from botoes import botao
 import BobGroup
 import PontuacaoContagem
 import SpriteGroups
@@ -14,7 +14,6 @@ def get_font(size):
 
 #definindo funcao game
 def game():
-    global fase
     fase = 0
     pygame.init()
 
@@ -418,6 +417,11 @@ def game():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if anterior.checkForInput(menu_instrucao4_pos):
                         status = "instrucoes3"
+                        SpriteGroups.personagensmenu2 = SpriteGroups.bob_desenho2()
+                        SpriteGroups.personagensmenu2.add(BobGroup.menus.bob_menu2)
+                        SpriteGroups.personagensmenu2.draw(tela)
+                        SpriteGroups.personagensmenu2.update()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if jogar.checkForInput(menu_instrucao4_pos):
                         status = "game"
