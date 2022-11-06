@@ -2,8 +2,8 @@
 import pygame
 from pygame.locals import *
 from sys import exit
-from botoes import botao
 
+from botoes import botao
 import BobGroup
 import PontuacaoContagem
 import SpriteGroups
@@ -14,7 +14,6 @@ def get_font(size):
 
 #definindo funcao game
 def game():
-    global fase
     fase = 0
     pygame.init()
 

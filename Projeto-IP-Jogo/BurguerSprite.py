@@ -26,7 +26,7 @@ class Burguer(pygame.sprite.Sprite):
         if self.rect.colliderect(BobGroup.personagens.bob.rect):
             print('Burguer Coletado!')
             coletou = pygame.mixer.Sound('sons/temacoletados.wav')
-            pygame.mixer.Sound.set_volume(coletou, 0.2)
+            pygame.mixer.Sound.set_volume(coletou, 0.1)
             coletou.play()
             PontuacaoContagem.burguer += 1
             self.kill()
