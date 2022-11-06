@@ -32,16 +32,19 @@ class Personagens_menu():
     def personagens_menu(self):
         self.bob_menu = BobInstrucoes.BobMenu()
         SpriteGroups.bob_menu.add(self.bob_menu)
+        return self.bob_menu
 
     def personagens_menu2(self):
         self.bob_menu2 = BobInstrucoes2.BobMenu2()
         SpriteGroups.personagensmenu2.add(self.bob_menu2)
+        return self.bob_menu2
 
     def personagens_menu3(self):
         self.bob_menu3 = BobInstrucoes3.BobMenu3()
         self.plancton_menu = PlanctonInstrucoes.PlanctonMenu()
         SpriteGroups.personagensmenu3.add(self.bob_menu3)
         SpriteGroups.personagensmenu3.add(self.plancton_menu)
+        return self.bob_menu3
 
 personagens = Personagens()
 menus = Personagens_menu()

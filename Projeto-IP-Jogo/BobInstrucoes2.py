@@ -21,24 +21,24 @@ class BobMenu2(pygame.sprite.Sprite):
         self.animar = True
         if pygame.key.get_pressed()[K_a]:
             self.x_bob -= 10
-            if self.x_bob <= 0:
-                self.x_bob = 0
+            if self.x_bob <= 200:
+                self.x_bob = 200
             self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_d]:
             self.x_bob += 10
-            if self.x_bob >= 970:
-                self.x_bob = 970
-            self.rect.topleft = self.x_bob,self.y_bob
+            if self.x_bob >= 770:
+                self.x_bob = 770
+            self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_w]:
             self.y_bob -= 10
-            if self.y_bob <= 52:
-                self.y_bob = 52
-            self.rect.topleft = self.x_bob,self.y_bob
+            if self.y_bob <= 220:
+                self.y_bob = 220
+            self.rect.topleft = self.x_bob, self.y_bob
         if pygame.key.get_pressed()[K_s]:
             self.y_bob += 10
-            if self.y_bob >= 580:
-                self.y_bob = 580
-            self.rect.topleft = self.x_bob,self.y_bob
+            if self.y_bob >= 440:
+                self.y_bob = 440
+            self.rect.topleft = self.x_bob, self.y_bob
     def update(self):
         if self.animar == True:
             self.atual += 0.05

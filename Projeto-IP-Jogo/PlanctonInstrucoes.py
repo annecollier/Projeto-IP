@@ -23,7 +23,7 @@ class PlanctonMenu(pygame.sprite.Sprite):
         # perdendo 1 vida quando o Bob colide com o plankton
         if self.rect.colliderect(BobGroup.menus.bob_menu3.rect) and (self.colidiu == False):
             print('Vida perdida!')
-            PontuacaoContagem.vidas_menu -= 1
+            PontuacaoContagem.status_menu = "PERDEU A VIDA"
             perdeu = pygame.mixer.Sound('sons/inimigo.wav')
             pygame.mixer.Sound.set_volume(perdeu, 0.2)
             perdeu.play()
