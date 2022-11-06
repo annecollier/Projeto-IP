@@ -26,7 +26,7 @@ class Plancton_2(pygame.sprite.Sprite):
     # ("subindo", "descendo", "direita" e "esquerda")
     def subindo(self):
         self.y_planc += self.change_position
-        if self.y_planc >= 560:
+        if self.y_planc >= 530:
             self.ida_vertical = False
         return self
     def descendo(self):
@@ -38,7 +38,7 @@ class Plancton_2(pygame.sprite.Sprite):
         return self
     def direita(self):
         self.x_planc += self.change_position
-        if self.x_planc >= 980:
+        if self.x_planc >= 900:
             self.ida_horizontal = False
         return self
     def esquerda(self):
