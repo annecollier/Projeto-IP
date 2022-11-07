@@ -1,3 +1,4 @@
+#realizando as importações necessárias
 import pygame
 from random import randint
 import BobGroup
@@ -59,7 +60,7 @@ class Plancton(pygame.sprite.Sprite):
             Plancton.descendo(BobGroup.personagens.plancton)
         self.rect.topleft = self.x_planc, self.y_planc
 
-    # atualizando sprite
+    # atualizando sprite e computando colisão
     def update(self):
         # perdendo 1 vida quando o Bob colide com o plankton
         if self.rect.colliderect(BobGroup.personagens.bob.rect) and (self.colidiu == False):

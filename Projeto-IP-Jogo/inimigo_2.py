@@ -1,9 +1,10 @@
+#realizando as importações necessárias
 import pygame
 from random import randint
 import BobGroup
 import PontuacaoContagem
 
-# determinando a sprite do plankton:
+# determinando a sprite do segundo inimigo:
 class Plancton_2(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -22,7 +23,7 @@ class Plancton_2(pygame.sprite.Sprite):
         self.ida_horizontal = True
         self.ida_vertical = False
 
-    # definindo funções que mudam a direção do plankton quando ele atinge os cantos da tela:
+    # definindo funções que mudam a direção do inimigo quando ele atinge os cantos da tela:
     # ("subindo", "descendo", "direita" e "esquerda")
     def subindo(self):
         self.y_planc += self.change_position
@@ -48,7 +49,7 @@ class Plancton_2(pygame.sprite.Sprite):
         elif self.x_planc <= 0:
             self.ida_horizontal = True
         return self
-    # verifica a condição do plankton e chama as funções anteriores, de mudar de direção, quando necessário:
+    # verifica a condição do inimigo e chama as funções anteriores, de mudar de direção, quando necessário:
     def posicao(self):
         if self.ida_horizontal:
             Plancton_2.direita(BobGroup.personagens.plancton2)
@@ -60,14 +61,14 @@ class Plancton_2(pygame.sprite.Sprite):
             Plancton_2.descendo(BobGroup.personagens.plancton2)
         self.rect.topleft = self.x_planc, self.y_planc
 
-    # atualizando sprite
+    # atualizando sprite e computando colisão
     def update(self):
         self.atual += 0.05
         if self.atual >= len(self.sprites):
             self.atual = 0
         self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (120, 120))
-        # perdendo 1 vida quando o Bob colide com o plankton
+        # perdendo 1 vida quando o Bob colide com o inimigo
         if self.rect.colliderect(BobGroup.personagens.bob.rect) and (self.colidiu == False):
             print('Vida perdida!')
             PontuacaoContagem.vidas -= 1

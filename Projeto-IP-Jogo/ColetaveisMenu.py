@@ -1,7 +1,9 @@
+#realizando as importações necessárias
 import pygame
 import BobGroup
 
-
+# criando a sprite da batatinha e a colocando no menu como um ítem (definindo coordenadas para localização
+# e definindo sua escala/tamanho)
 class FriesMenu(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -16,6 +18,7 @@ class FriesMenu(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = self.x,self.y
 
+    # atualizando a sprite
     def update(self):
         self.atual += 0.015
         if self.atual >= len(self.sprites):
@@ -29,6 +32,8 @@ class FriesMenu(pygame.sprite.Sprite):
             coletou.play()
             self.kill()
 
+# criando a sprite do hamburguer e a colocando no menu como um ítem (definindo coordenadas para localização
+# e definindo sua escala/tamanho)
 class BurguerMenu(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -43,6 +48,7 @@ class BurguerMenu(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.topleft = self.x,self.y
 
+    # atualizando a sprite
     def update(self):
         self.atual += 0.015
         if self.atual >= len(self.sprites):
@@ -56,6 +62,8 @@ class BurguerMenu(pygame.sprite.Sprite):
             coletou.play()
             self.kill()
 
+# criando a sprite do refri e a colocando no menu como um ítem (definindo coordenadas para localização
+# e definindo sua escala/tamanho)
 class RefriMenu(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)

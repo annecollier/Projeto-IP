@@ -3,11 +3,10 @@ import SpongeSprite
 import SpriteGroups
 import PlanctonSprite
 import inimigo_2
-
 import BobInstrucoes
 import PlanctonInstrucoes
 
-
+# criando os personagens do jogo em si: bob, plancton e inimigo 2
 class Personagens():
     def __init__(self):
         self.bobb = Personagens.bob(self)
@@ -20,16 +19,13 @@ class Personagens():
         SpriteGroups.todas_sprites.add(self.bob)
         return self.bob
 
-
+# criando os personagens dos menus: bob's e plancton e adicionando eles a um grupo de sprites
 class Personagens_menu():
 
     def __init__(self):
-
         self.bob_menuu = Personagens_menu.personagens_menu(self)
         self.bob_menuu2 = Personagens_menu.personagens_menu2(self)
         self.bob_menuu3 = Personagens_menu.personagens_menu3(self)
-
-
 
     def personagens_menu(self):
         self.bob_menu = BobInstrucoes.BobMenu()
@@ -48,6 +44,7 @@ class Personagens_menu():
         SpriteGroups.personagensmenu3.add(self.plancton_menu)
         return self.bob_menu3
 
+# chamando as classes por meio de variáveis
 personagens = Personagens()
 menus = Personagens_menu()
 
