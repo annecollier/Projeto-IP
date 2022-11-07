@@ -1,11 +1,11 @@
 # Projeto-IP
 Instruções para rodar o sistema: 
 
-1º - Ter o Python e o Pygame instalados em sua máquina.
+1º - Clonar este repositório ou baixar o aquivo zip.
 
-2º - Clonar este repositório ou baixar o aquivo zip.
+2º - Caso tenha baixado o arquivo zip, extraia os arquivos antes de abri-los no IDE de sua preferência.
 
-3º - Caso tenha baixado o arquivo zip, extraia os arquivos antes de abri-los no IDE de sua preferência.
+3º - Ter o Phyton instalado, defini-lo como interpretador do arquivo e instalar o pygame.
 
 4º - Rodar o arquivo main.py.
 
