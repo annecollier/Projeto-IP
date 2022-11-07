@@ -21,6 +21,8 @@ def game():
 
 #musica de fundo
     pygame.mixer.music.set_volume(1.0)
+    pygame.mixer.music.load('sons\music_bob.mp3')
+    pygame.mixer.music.play(-1)
 
 #definicoes basicas (ex: tamanho): tela, icones: bob, vidas e coletaveis
     altura = 640
